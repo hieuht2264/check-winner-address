@@ -1,0 +1,20 @@
+shared: &shared
+  adapter: mysql2
+  reconnect: true
+  encoding: utf8
+  pool: 5
+  socket: /tmp/mysql.sock
+  username: root
+  password:
+
+development:
+  database: winner_list_dev
+  <<: *shared
+
+production:
+  database: winner_list_pro
+  <<: *shared
+
+test: &TEST
+  database: winner_list_test
+  <<: *shared
