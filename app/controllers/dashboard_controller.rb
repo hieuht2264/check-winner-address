@@ -2,6 +2,10 @@
 
 class DashboardController < ApplicationController
   def index
+    
+  end
+
+  def result
     if params[:winner_list_addresses].present? && params[:owner_list_addresses].present?
       @result = []
       @winner_list_parsed = params[:winner_list_addresses].gsub(/\s/, ',').split(',,').map{ |str| remove_secret_character(str) }
@@ -9,7 +13,6 @@ class DashboardController < ApplicationController
       @owner_list_parsed.each do |owner_address|
         @result << owner_address if @winner_list_parsed.include?(remove_secret_character(owner_address))
       end
-      # binding.pry
       @result
     end
   end

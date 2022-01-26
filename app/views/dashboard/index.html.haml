@@ -3,30 +3,15 @@
     %h4 Check winner list :)
 .row
   .col-12
-    - if @result
+    = form_tag result_path, method: :post do
       .row
-        .col-md-5.offset-md-2
-          %h4 Result
-      .row
-        .col-md-5.offset-md-2
-          - @result.each do |address|
-            %span=address
-      .row
-        .col-md-5.offset-md-2
-          = link_to 'Back', root_path, class: 'btn btn-default'
-    - else
-      = form_tag root_path, method: :get do
-        .row
-          .col-md-3.offset-md-2
-            = label_tag 'winner_list_addresses', 'Winner List'
-            = text_area_tag 'winner_list_addresses', nil, rows: 10, cols: 25, class: 'form-control'
-          .col-md-4.offset-md-1
-            = label_tag 'owner_list_addresses', 'Owner List'
-            = text_area_tag 'owner_list_addresses', nil, rows: 10, cols: 25, class: 'form-control'
-          / .col-md-3.offset-md-1
-          /   = label_tag 'result', 'Result'
-          /   = text_area_tag 'result', nil, rows: 10, cols: 25, class: 'form-control'
-        .row.mt-3
-          .col-md-3.offset-md-5
-            %button{type: 'submit', class: 'btn btn-success'}
-              Submit
+        .col-md-3.offset-md-2
+          = label_tag 'winner_list_addresses', 'Winner List'
+          = text_area_tag 'winner_list_addresses', nil, rows: 10, cols: 25, class: 'form-control'
+        .col-md-4.offset-md-1
+          = label_tag 'owner_list_addresses', 'Owner List'
+          = text_area_tag 'owner_list_addresses', nil, rows: 10, cols: 25, class: 'form-control'
+      .row.mt-3
+        .col-md-3.offset-md-5
+          %button{type: 'submit', class: 'btn btn-success'}
+            Submit
